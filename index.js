@@ -1,3 +1,6 @@
+// Aluno:
+//   Igor Pereira Vidal (201810244)
+
 const express = require('express')
 const mongoose = require('mongoose')
 
@@ -20,12 +23,14 @@ app.use(express.urlencoded({ extended: true}))
 app.use(express.json())
 
 app.get('/', (req, res) => {
-    res.send('Hello, World!!!!!')
+    res.send('Bem-vindo!')
 })
 
 router.post('/tarefas', tarefa_controller.cadastrarTarefa)
+router.put('/tarefas/:id', tarefa_controller.alterarTarefa)
 router.get('/tarefas', tarefa_controller.listarTarefas)
 router.get('/tarefas/:id', tarefa_controller.buscarTarefa)
+router.delete('/tarefas/:id', tarefa_controller.deletarTarefa)
 
 app.use('/', router)
 
