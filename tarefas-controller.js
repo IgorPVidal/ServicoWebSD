@@ -58,6 +58,11 @@ exports.buscarTarefa = function (req, res) {
         } else if (!tarefa) {
             res.status(404).send('Não existem Tarefas com o id indicado.')
         } else {
+            if (tarefa.prazo != null) {
+                console.log("Prazo convertido para o horário local: " + tarefa.prazo)
+            } else {
+                console.log("Tarefa consultada não apresenta prazo.")
+            }
             return res.status(200).json(tarefa);
         }
     })
